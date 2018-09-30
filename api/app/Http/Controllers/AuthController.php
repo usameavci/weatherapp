@@ -31,7 +31,7 @@ class AuthController extends Controller
         $user->generateApiToken();
 
         return response()->json([
-            'messages' => 'Oturum açıldı',
+            'message' => 'Oturum açıldı',
             'user' => new UserResource($user)
         ]);
     }
@@ -47,7 +47,7 @@ class AuthController extends Controller
         $user->deleteApiToken();
 
         return response()->json([
-            'messages' => 'Oturum kapatıldı'
+            'message' => 'Oturum kapatıldı'
         ]);
     }
 }

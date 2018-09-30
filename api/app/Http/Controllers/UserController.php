@@ -43,7 +43,7 @@ class UserController extends Controller
         $user = User::create($validated);
 
         return response()->json([
-            'messages' => 'Kullanıcı oluşturuldu',
+            'message' => 'Kullanıcı oluşturuldu',
             'user' => new UserResource($user)
         ]);
     }
@@ -90,7 +90,7 @@ class UserController extends Controller
         }
 
         return response()->json([
-            'messages' => 'Kullanıcı güncellendi',
+            'message' => 'Kullanıcı güncellendi',
             'user' => new UserResource($user)
         ]);
     }
@@ -112,7 +112,7 @@ class UserController extends Controller
         }
 
         return response()->json([
-            'messages' => 'Kullanıcı silindi'
+            'message' => 'Kullanıcı silindi'
         ]);
     }
 }

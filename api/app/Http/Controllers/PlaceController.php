@@ -37,7 +37,7 @@ class PlaceController extends Controller
         $place = Place::create($validated);
 
         return response()->json([
-            'messages' => 'Lokasyon oluşturuldu',
+            'message' => 'Lokasyon oluşturuldu',
             'user' => new PlaceResource($place)
         ]);
     }
@@ -73,7 +73,7 @@ class PlaceController extends Controller
         }
 
         return response()->json([
-            'messages' => 'Lokasyon güncellendi',
+            'message' => 'Lokasyon güncellendi',
             'user' => new PlaceResource($place)
         ]);
     }
@@ -91,7 +91,7 @@ class PlaceController extends Controller
         }
 
         return response()->json([
-            'messages' => 'Lokasyon silindi'
+            'message' => 'Lokasyon silindi'
         ]);
     }
 
@@ -134,7 +134,7 @@ class PlaceController extends Controller
         }
         
         return response()->json([
-            'messages' => 'Tahminler alındı',
+            'message' => 'Tahminler alındı',
             'data' => $data
         ]);
     }
