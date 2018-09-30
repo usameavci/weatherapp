@@ -129,7 +129,7 @@ class PlaceController extends Controller
         ];
         event(new WeatherForecastQuestioned($place, $data, $event_payload));
 
-        if ($status < 200 && $status >= 300) {
+        if ($status < 200 || $status >= 300) {
             abort($e->getCode(), 'Hava tahmini alınırken hata oluştu!');
         }
         
