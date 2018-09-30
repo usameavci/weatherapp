@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->group(function ($router) {
-	$router->post('auth/logout', 'AuthController@logout');
 
     $router->resource('users', 'UserController');
     $router->resource('places', 'PlaceController');
