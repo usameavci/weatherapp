@@ -18,7 +18,8 @@ class Log extends Model
     ];
 
     protected $casts = [
-        'response' => 'json'
+        'response' => 'json',
+        'execution_time' => 'float'
     ];
 
     public function user()

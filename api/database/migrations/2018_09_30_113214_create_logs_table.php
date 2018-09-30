@@ -18,7 +18,7 @@ class CreateLogsTable extends Migration
             $table->integer('user_id');
             $table->integer('place_id');
             $table->dateTime('executed_at');
-            $table->unsignedDecimal('execution_time', 11, 11);
+            $table->string('execution_time');
             $table->ipAddress('ip_address');
             $table->json('response')->nullable();
             $table->enum('status', ['success', 'failed']);
