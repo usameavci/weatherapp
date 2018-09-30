@@ -28,7 +28,7 @@ class WeatherForecastQuestioned
     public function handle(EventWeatherForecastQuestioned $event)
     {
         $executed_at = now();
-        $status = $event->payload->status < 200 && $event->payload->status >= 300 ? 'failed' : 'success';
+        $status = ($event->payload->status < 200 || $event->payload->status >= 300) ? 'failed' : 'success';
 
         $log_data = [
             'user_id' => $event->user->id,
