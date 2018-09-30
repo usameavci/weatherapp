@@ -1,0 +1,100 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Hava Durumu Bilgisi</h4>
+                </div>
+                <form class="content" [formGroup]="formData" (ngSubmit)="onFormSubmit()">
+                    <div class="input-group">
+                        <select class="form-control" formControlName="place">
+                            <option value selected disabled>Konum Seçiniz</option>
+                            <option *ngFor="let place of places" [ngValue]="place">{{ place.name }}</option>
+                        </select>
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit" [disabled]="! formData.get('place').value">Göster</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row" *ngIf="forecastData">
+                <div class="col-lg-6 col-sm-6">
+                    <div class="card">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div class="icon-big icon-warning text-center">
+                                        <i class="ti-location-pin"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div class="numbers">
+                                        <p>{{ forecastData.location.country }}</p>
+                                        {{ forecastData.location.name }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <div class="card">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div class="icon-big icon-info text-center">
+                                        <img [src]="forecastData.current.condition.icon" [alt]="forecastData.current.condition.text">
+                                    </div>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div class="numbers">
+                                        <p>Genel Durum</p>
+                                        {{ forecastData.current.condition.text }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <div class="card">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div class="icon-big icon-success text-center">
+                                        <i class="ti-shine"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div class="numbers">
+                                        <p>Sıcaklık</p>
+                                        {{ forecastData.current.temp_c }}°С
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <div class="card">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div class="icon-big icon-danger text-center">
+                                        <i class="ti-cloud"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div class="numbers">
+                                        <p>Rüzgar</p>
+                                        {{ forecastData.current.wind_kph }} km
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

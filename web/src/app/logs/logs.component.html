@@ -1,0 +1,79 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <spinner-cmp *ngIf="isLoading"></spinner-cmp>
+            <form class="card" [formGroup]="formData" (ngSubmit)="onFormSubmit()" *ngIf="!isLoading">
+                <div class="header">
+                    <h4 class="title">İşlem Raporu</h4>
+                </div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Kullanıcı</label>
+                                <select class="form-control" formControlName="user_id" name="user_id">
+                                    <option value selected disabled>Kullanıcı Seçiniz</option>
+                                    <option *ngFor="let user of users" [ngValue]="user.id">{{ user.name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Lokasyon</label>
+                                <select class="form-control" formControlName="place_id" name="place_id">
+                                    <option value selected disabled>Lokasyon Seçiniz</option>
+                                    <option *ngFor="let places of places" [ngValue]="places.id">{{ places.name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Durum</label>
+                                <select class="form-control border-input" formControlName="status" name="status">
+                                    <option value selected disabled>Durum Seçiniz</option>
+                                    <option value="success">Başarılı</option>
+                                    <option value="failed">Başarısız</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label>Zaman Aralığı</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input class="form-control border-input" type="date" formControlName="executed_at_from" name="executed_at_from">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control border-input" type="date" formControlName="executed_at_to" name="executed_at_to">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-info btn-fill" type="submit">Filtrele</button>
+                    </div>
+                </div>
+            </form>
+            <div class="card" *ngIf="logs.dataRows.length > 0">
+                <div class="header">
+                    <h4 class="title">İşlem Listesi</h4>
+                </div>
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th *ngFor="let cell of logs.headerRow">{{ cell.label }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of logs.dataRows">
+                                <td *ngFor="let cell of logs.headerRow">{{ objGet(row, cell.id) }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

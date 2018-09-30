@@ -1,0 +1,19 @@
+<form class="card" [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit()">
+    <div class="header">
+        <h4 class="title">Oturum Aç</h4>
+    </div>
+    <div class="content">
+        <div class="form-group">
+            <label>E-posta Adresi</label>
+            <input class="form-control border-input" type="text" formControlName="email">
+        </div>
+        <div class="form-group">
+            <label>Şifre</label>
+            <input class="form-control border-input" type="password" formControlName="password">
+        </div>
+        <div class="text-center">
+            <button class="btn btn-info btn-fill btn-wd" type="submit">Oturum Aç</button>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</form>

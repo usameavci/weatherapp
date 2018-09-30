@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <spinner-cmp *ngIf="isLoading"></spinner-cmp>
+            <form class="card" [formGroup]="formData" (ngSubmit)="onFormSubmit()" *ngIf="!isLoading && (formOpened || isEditing)">
+                <div class="header">
+                    <h4 class="title">Lokasyon {{ isEditing ? 'Güncelle' : 'Ekle' }}</h4>
+                </div>
+                <div class="content">
+                    <div class="form-group">
+                        <label>Lokasyon Adı</label>
+                        <input class="form-control border-input" type="text" formControlName="name" name="name">
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-default btn-fill" type="button" (click)="cancelEditing()">İptal Et</button>
+                        <button class="btn btn-info btn-fill" type="submit">{{ isEditing ? 'Güncelle' : 'Lokasyon Ekle' }}</button>
+                    </div>
+                </div>
+            </form>
+            <div class="card" *ngIf="!isLoading && !(formOpened || isEditing)">
+                <div class="content text-right">
+                    <button class="btn btn-primary" (click)="formOpened = true"><i class="ti-plus"></i> Lokasyon Ekle</button>
+                </div>
+            </div>
+            <div class="card" *ngIf="!isLoading">
+                <div class="header">
+                    <h4 class="title">Lokasyon Listesi</h4>
+                </div>
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th *ngFor="let cell of places.headerRow">{{ cell.label }}</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="places.dataRows.length > 0">
+                            <tr *ngFor="let row of places.dataRows">
+                                <td *ngFor="let cell of places.headerRow">{{ row[cell.id] }}</td>
+                                <td>
+                                    <button class="btn btn-xs btn-simple btn-default btn-icon" (click)="editItem(row)"><i class="ti-pencil-alt"></i></button>
+                                    <button class="btn btn-xs btn-simple btn-danger btn-icon" (click)="deleteItem(row)"><i class="ti-close"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
