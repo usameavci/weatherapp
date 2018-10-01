@@ -17,7 +17,8 @@
                     </div>
                 </form>
             </div>
-            <div class="row" *ngIf="forecastData">
+            <spinner-cmp *ngIf="isLoading"></spinner-cmp>
+            <div class="row" *ngIf="!isLoading && forecastData">
                 <div class="col-lg-6 col-sm-6">
                     <div class="card">
                         <div class="content">
