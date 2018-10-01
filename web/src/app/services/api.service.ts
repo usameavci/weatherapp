@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
 import { Http, Response, RequestOptions, Headers, ResponseContentType, RequestMethod, URLSearchParams } from '@angular/http'
 import { AuthHelper } from '../helpers/auth.helper'
+import { environment } from '../../environments/environment'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/toPromise'
 
 @Injectable()
 export class APIService {
-    baseUrl: string = 'http://api.weatherapp.test'
+    baseUrl: string = environment.apiUrl
 
     constructor(private http: Http, private router: Router, private authHelper: AuthHelper) {}
 
